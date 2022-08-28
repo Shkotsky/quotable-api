@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import RandomQuote from "./pages/RandomQuote";
+import SearchQuote from "./pages/SearchQuote";
+import Button from "react-bootstrap/Button";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav className="d-flex justify-content-lg-evenly my-4">
+        <Link to="/">
+          <Button variant="dark">Home</Button>
+        </Link>
+        <Link to="/random">
+          <Button variant="success">Random</Button>
+        </Link>
+      </nav>
+      <Routes>
+        <Route exact path="/" element={<SearchQuote />} />
+        <Route path="/random" element={<RandomQuote />} />
+      </Routes>
+    </Router>
   );
 }
 
